@@ -17,7 +17,9 @@ import org.junit.runner.RunWith
 @LargeTest
 class TextTest {
 
-    val STRING_TO_BE_TYPED = "Espresso!!!"
+    companion object {
+        const val STRING_TO_BE_TYPED = "Espresso!!!"
+    }
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
