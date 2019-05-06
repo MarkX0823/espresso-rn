@@ -87945,19 +87945,27 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var App = function (_Component) {
     (0, _inherits2.default)(App, _Component);
 
-    function App() {
+    function App(props) {
+      var _this;
+
       (0, _classCallCheck2.default)(this, App);
-      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(App).apply(this, arguments));
+      _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(App).call(this, props));
+      _this.state = {
+        text: 'test placeholder'
+      };
+      return _this;
     }
 
     (0, _createClass2.default)(App, [{
       key: "render",
       value: function render() {
+        var _this2 = this;
+
         return _react.default.createElement(_reactNative.View, {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 29
           }
         }, _react.default.createElement(_reactNative.Text, {
           accessible: true,
@@ -87965,7 +87973,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.welcome,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 25
+            lineNumber: 30
           }
         }, "Welcome to React Native!"), _react.default.createElement(_reactNative.Text, (0, _extends2.default)({
           accessible: true,
@@ -87974,15 +87982,61 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.instructions,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 31
           }
         }), "To get started, edit App.js"), _react.default.createElement(_reactNative.Text, (0, _extends2.default)({}, (0, _testUtils.default)("myText3"), {
           style: styles.instructions,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27
+            lineNumber: 32
           }
-        }), instructions));
+        }), instructions), _react.default.createElement(_reactNative.Text, (0, _extends2.default)({}, (0, _testUtils.default)("myText4"), {
+          style: styles.test,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33
+          }
+        }), "Test"), _react.default.createElement(_reactNative.TextInput, (0, _extends2.default)({}, (0, _testUtils.default)("myText5"), {
+          style: styles.textInput,
+          onChangeText: function onChangeText(text) {
+            return _this2.setState({
+              text: text
+            });
+          },
+          value: this.state.text,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34
+          }
+        })), _react.default.createElement(_reactNative.FlatList, (0, _extends2.default)({}, (0, _testUtils.default)("myList1"), {
+          data: [{
+            key: 'a'
+          }, {
+            key: 'b'
+          }, {
+            key: 'c'
+          }, {
+            key: 'd'
+          }, {
+            key: 'e'
+          }, {
+            key: 'f'
+          }],
+          renderItem: function renderItem(_ref) {
+            var item = _ref.item;
+            return _react.default.createElement(_reactNative.Text, {
+              style: styles.item,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 50
+              }
+            }, item.key);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
+          }
+        })));
       }
     }]);
     return App;
@@ -87993,7 +88047,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var styles = _reactNative.StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'center',
       backgroundColor: '#F5FCFF'
     },
@@ -88006,6 +88060,23 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       textAlign: 'center',
       color: '#333333',
       marginBottom: 5
+    },
+    item: {
+      padding: 10,
+      fontSize: 18,
+      height: 44
+    },
+    test: {
+      textAlign: 'center',
+      color: 'orange',
+      marginBottom: 5,
+      fontSize: 36
+    },
+    textInput: {
+      textAlign: 'center',
+      color: 'blue',
+      marginBottom: 5,
+      fontSize: 36
     }
   });
 },416,[1,417,11,22,23,30,33,36,49,2,418],"App.js");

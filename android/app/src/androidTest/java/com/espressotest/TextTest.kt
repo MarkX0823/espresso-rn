@@ -12,6 +12,8 @@ import com.espressotest.EspressoViewFinder.waitForDisplayed
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.microsoft.appcenter.espresso.Factory
+import org.junit.After
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -23,6 +25,9 @@ class TextTest {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
+
+    @get:Rule
+    val reportHelper = Factory.getReportHelper()!!
 
     @Test
     fun test1() {
@@ -57,6 +62,12 @@ class TextTest {
         waitForDisplayed(withContentDescription("myText5")) { editText ->
             onView(editText).perform(replaceText(STRING_TO_BE_TYPED), closeSoftKeyboard())
             onView(editText).check(matches(withText(STRING_TO_BE_TYPED)))
+            reportHelper.label("Stopping")
         }
+    }
+
+    @After
+    fun tearDown() {
+        reportHelper.label("Stopping")
     }
 }

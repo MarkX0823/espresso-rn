@@ -8,6 +8,8 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import com.espressotest.EspressoViewFinder.waitForDisplayed
 import com.espressotest.EspressoViewFinder.childAtIndex
+import com.microsoft.appcenter.espresso.Factory
+import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,6 +20,9 @@ class ListTest {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
+
+    @get:Rule
+    val reportHelper = Factory.getReportHelper()!!
 
     @Test
     fun test1() {
@@ -31,5 +36,10 @@ class ListTest {
                 scrollContentInteraction.check(ViewAssertions.matches(ViewMatchers.hasChildCount(baseCount + expectedItemCount)))
             }
         }
+    }
+
+    @After
+    fun tearDown() {
+        reportHelper.label("Stopping")
     }
 }
